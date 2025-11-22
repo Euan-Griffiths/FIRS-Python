@@ -10,5 +10,5 @@ with open("./astropy/data.txt","w") as f:
     f.write(str(data))
 print(data.shape)
 print(data.field(0))
-#plt.imshow(data, cmap="gray")
+#plt.imshow(data, cmap="gray") Problem for checking dimensions look at visulise docs
 hdul.close()
