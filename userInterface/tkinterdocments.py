@@ -1,8 +1,8 @@
-from tkinter import *
-from tkinter import ttk
-from astropy.io import fits
-from matplotlib import pyplot as plt
-
+from tkinter import * 
+from tkinter import ttk  # Importing Tkinter to creater the UI
+from astropy.io import fits # Importing Astropy to be able to open FITS files in python
+from matplotlib import pyplot as plt # Importing MatPlotLib to render the images from the data recived from the FITS files
+import numpy #Used to resive the data from the files to create the images, by reducing the size of the arrays as they can be 3D or 4D as FITS can Include Time/Maximum Amplitude or can create 3D images due to the seperate positions of the telescopes in the Array
 
 class Main():
     def __init__(self,root):
