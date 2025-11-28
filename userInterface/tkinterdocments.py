@@ -6,15 +6,31 @@ import numpy #Used to resive the data from the files to create the images, by re
 
 class Main():
     def __init__(self,root):
+        
+        # Tkinter Window
         root.title("Fits File Converter (FFC)")
         mainframe = ttk.Frame(root,padding=(3,3,12,12))
         mainframe.grid(column=0,row=0,sticky=(N,E,S,W))
         ttk.Label(mainframe,text="A Fits Image Visuliser In Python.",padding=(10,10,10,10)).grid(column=0,row=1,sticky=(W,E,N))
         
+        # Variables
+        
+        self.file_name = ""
+        self.selected_image = 10000
+        
     
     def getDimension(self):
         pass
-    
+    def OpenFiles(self):
+        with fits.open(self.file_name) as self.hdul:
+            self.info = self.hdul.info() # gets how many images are in the file, shown in the inital header
+            while True:
+                try:
+                    self.header = self.hdul[self.selected_image]
+                    self.data = self.hdul[self.selected_image]
+                    break
+                except:
+                    pass
 root =Tk()
 Main(root)
 root.mainloop()
