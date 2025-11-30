@@ -31,6 +31,8 @@ class Main():
                     break
                 except:
                     pass
+        return    
+            
 root =Tk()
 Main(root)
 root.mainloop()
