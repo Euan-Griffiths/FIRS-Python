@@ -14,7 +14,7 @@ print(data.shape)
 data = numpy.reshape(data,(300,300))
 print(f"Data Shape (NAXIS,NAXIS1): {data.shape}")
 
-fig, ax = plt.subplots()
-ax.imshow(data,origin="lower")
-
+plt.imshow(data, cmap="gray")
+plt.show()
+input()
 hdul.close()
