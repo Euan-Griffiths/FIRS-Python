@@ -2,19 +2,17 @@ from astropy.io import fits
 from matplotlib import pyplot as plt
 import numpy
 
-hdul = fits.open(r".\imaging_pipeline.60755.433778935185\14A-000.MJD60755.41922898148._1331+305_3C286__ph.C_band.cont.regcal.I.alpha.error.fits")
+hdul = fits.open(r".\astropy\25A-470.MJD60808.21482493056.AT2025inl_sci.X_band.cont.regcal.I.pbcor.tt0.fits")
 info = hdul[0].header
 data = hdul[0].data
-with open("./astropy/test.txt","w") as f:
-    f.write(str(info))
-with open("./astropy/data.txt","w") as f:
-    f.write(str(data))
+
 print(data.shape)
 
-data = numpy.reshape(data,(300,300))
+data = numpy.reshape(data,(2304, 2304))
 print(f"Data Shape (NAXIS,NAXIS1): {data.shape}")
 
-plt.imshow(data, cmap="gray")
+plt.imshow(data, cmap="BuPu")
+plt.colorbar()
 plt.show()
 input()
 hdul.close()
