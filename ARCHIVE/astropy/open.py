@@ -2,7 +2,7 @@ from astropy.io import fits
 from matplotlib import pyplot as plt
 import numpy
 
-hdul = fits.open(r".\astropy\502nmos.fits")
+hdul = fits.open(r"502nmos.fits")
 info = hdul[0].header
 data = hdul[0].data
 
