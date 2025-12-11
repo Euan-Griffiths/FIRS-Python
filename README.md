@@ -1,2 +1,4 @@
-# A Project to get make a system to get images from fits for the user 
-All FITS files included for testing are Public and from the NRAO
+# PAIR
+PAIR is a Python Astrophyics Image Rendering Software designed to render Images from FITS (Flexible Image Transport System) Files.    
+  
+PAIR is built with a simple design making it suitable for Amateur astrophysicists with a simple and fast GUI
