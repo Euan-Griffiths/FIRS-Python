@@ -10,4 +10,6 @@ Data Provided by the open archive at [NRAO](data.nrao.edu)
 Data from the [ESA](https://www.esa.int/)
 - [502mnos](https://esahubble.org/projects/fits_liberator/eagledata/) The Eagle Nebula - Taken on the Hubble space telescope  
 - [656mnos](https://esahubble.org/projects/fits_liberator/eagledata/) The Eagle Nebula - Taken on the Hubble space telescope  
-- [673mnos](https://esahubble.org/projects/fits_liberator/eagledata/) The Eagle Nebula - Taken on the Hubble space telescope  
+- [673mnos](https://esahubble.org/projects/fits_liberator/eagledata/) The Eagle Nebula - Taken on the Hubble space telescope
+
+The National Radio Astronomy Observatory and Green Bank Observatory are facilities of the U.S. National Science Foundation operated under cooperative agreement by Associated Universities, Inc
