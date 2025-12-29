@@ -15,7 +15,8 @@ class Main():
         self.upperbound = 70
         
         #Lists for credit
-        Orginisations = []
+        Orginisations = [["NRAO",'ALMA','EVLA','GBT','GMVA','VLA','VLBA','Arecibo'],
+                         ['NASA/ESA','HUBBLE'],['NASA/ESA/CSA','JWST']]
         
     
     def main(self):
