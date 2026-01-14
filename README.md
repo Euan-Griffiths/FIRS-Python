@@ -1,4 +1,4 @@
-![Pair Logo](./Design_Docs/LogoWithText.png) 
+![Pair Logo, Proceded by the text "Pair, an astrophysics image renderer"](./Design_Docs/LogoWithText.png) 
 
 PAIR is a Python Astrophyics Image Rendering Software designed to render Images from FITS (Flexible Image Transport System) Files.    
   
