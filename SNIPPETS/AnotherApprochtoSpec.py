@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import numpy
 class spectrostcopy():
     def __init__(self):
-        self.arrays = [[5,0,3,3,7,9,3,'nan',2,4,7,6],
+        self.data = [[5,0,3,3,7,9,3,'nan',2,4,7,6],
                        [8,8,1,6,7,7,8,1,5,9,8,9],
                        [4,3,0,'nan','nan',0,2,'nan',8,1,3,'nan'],
                        ['nan',7,0,1,9,'nan',0,4,7,3,'nan',7],
@@ -15,11 +15,11 @@ class spectrostcopy():
                        [9,1,4,6,8,2,3,0,0,6,0,6],
                        [3,3,8,8,8,2,3,2,0,8,8,3]]
     def render(self):
-        self.arrays = numpy.array(self.arrays)
-        self.arrays = self.arrays.reshape(-1)
-        self.arrays = list(filter(lambda a: a!='nan',self.arrays))
-        self.arrays.sort()
-        plt.hist(self.arrays,bins=6,color='skyblue',edgecolor='black')
+        self.data = numpy.array(self.data)
+        self.data = self.data.reshape(-1)
+        self.data = list(filter(lambda a: a!='nan',self.data))
+        self.data.sort()
+        plt.hist(self.data,bins=6,color='skyblue',edgecolor='black')
         plt.xlabel('Values')
         plt.ylabel('Frequency')
         plt.title('Basic Histogram')
