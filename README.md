@@ -1,13 +1,13 @@
-![Pair Logo, Proceded by the text "Pair, an astrophysics image renderer"](./Design_Docs/LogoWithText.png) 
+![FIRS Logo, Proceded by the text "FIRS, Fits Image Rendering System"](./Design_Docs/LogoWithText.png) 
 
-PAIR is a Python Astrophyics Image Rendering Software designed to render Images from FITS (Flexible Image Transport System) Files.    
+FIRS is a FITS Image Rendering Software (Python Build) designed to render Images for Astrophysics    
   
-PAIR is built with a simple design making it suitable for Amateur astrophysicists with a simple and fast GUI
+FIRS is built with a simple design making it suitable for Amateur astrophysicists with a simple and fast GUI
 
 ## Contributing
-PAIR is currently not allowing any contrubutions by any person except the repostotoriy owner - Euan Griffiths  
+FIRS is currently not allowing any contrubutions by any person except the repostotoriy owner - Euan Griffiths  
 
-## Credits
+## Acknowledgements
 [![astropy](http://img.shields.io/badge/powered%20by-AstroPy-orange.svg?style=flat)](http://www.astropy.org/) ![Matplotlib](https://img.shields.io/badge/Matplotlib-%23ffffff.svg?style=flat&logo=Matplotlib&logoColor=black) ![NumPy](https://img.shields.io/badge/numpy-%23013243.svg?style=flat&logo=numpy&logoColor=white)  
 Data Provided by the open archive at [NRAO](data.nrao.edu)  
 - 25A-470 from the Extended Very Large Array EVLA  
