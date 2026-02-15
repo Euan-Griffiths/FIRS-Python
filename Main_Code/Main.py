@@ -10,11 +10,11 @@ from astropy.visualization import make_lupton_rgb # Lupton rgb allows for multii
 
 class FrontendMain():
     def __init__(self):
-        self.colour = "#BBB"
+        self.colour = "#888"
         self.window = tk.Tk()
         self.window.geometry=("500x500")
         self.window.state('zoomed')
-        self.window.iconbitmap("./SmallLogo.ico")
+        self.window.iconbitmap("./MAIN_CODE/SmallLogo.ico")
         self.window.configure(background=self.colour)
         
         self.frame = tk.Frame(self.window)
@@ -37,6 +37,24 @@ class BackendMain():
         self.data = self.data.reshape(-1) 
         self.data = list(filter(lambda a: a!='nan',self.data))
         self.data.sort()
+        
+    def CreateImageNonLupin(self,Path,Cmap,Bounds):
+        try:
+            with fits.open(self.imageLink) as self.hdul: # Opens the image and gets the image Data for rendering and the Header for credits 
+                self.data = self.hdul[self.location].data
+                self.header = self.hdul[self.location].header
+                
+        except FileNotFoundError: #File Erroring handeling
+            return ("Incorrect File Path")
+        except:
+            return("Unkown Error")
+        
+        try: # Image rendering and error detection
+            plt.imshow(self.data,cmap=Cmap,vmin=Bounds[0],vmax=Bounds[1])
+            plt.colorbar()
+            self.render()
+        except:
+            return("Rendering Error")
 
 
 class Main():
