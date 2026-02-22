@@ -76,7 +76,7 @@ class FrontendMain(Main):
         self.file_menu.add_command(label="Save File", command=None)
         self.file_menu.add_command(label="Open File", command=None)
         self.file_menu.add_command(label="Close Tab", command=None)
-        self.file_menu.add_command(label="Exit", command=None)
+        self.file_menu.add_command(label="Exit", command=self.quitprogram())
         
         
         self.frame1 = tk.Frame(self.window)
@@ -90,9 +90,14 @@ class FrontendMain(Main):
         self.frame2.grid(row=1)
         
         self.window.mainloop()
+    
+    
         
     def main(self):
         pass
+    
+    def quitprogram(self):
+        quit()
 if __name__ == "__main__":
 
     main = Main()
