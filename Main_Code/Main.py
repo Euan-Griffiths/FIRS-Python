@@ -47,12 +47,9 @@ class Main(BackendMain):
     def __init__(self):
         #Initalising the backend and frontend
         super().__init__()
-        if frun == True:
-            frun == False
-            self.frontend = FrontendMain()
 
     def main(self):
-        pass
+        self.frontend = FrontendMain()
 
 class FrontendMain(Main):
     def __init__(self):
@@ -64,11 +61,9 @@ class FrontendMain(Main):
         self.window.iconbitmap("./MAIN_CODE/SmallLogo.ico")
         self.window.configure(background=self.colour)
         
-        self.frame1 = tk.Frame(self.window)
         
         self.Menubar = tk.Menu()
-        self.frame1.config(menu=self.Menubar)
-        
+        self.window.config(menu=self.Menubar)
         self.file_menu = tk.Menu(self.Menubar)
         self.edit_menu = tk.Menu(self.Menubar)
         self.option_menu = tk.Menu(self.Menubar)
@@ -81,30 +76,25 @@ class FrontendMain(Main):
         self.file_menu.add_command(label="Save File", command=None)
         self.file_menu.add_command(label="Open File", command=None)
         self.file_menu.add_command(label="Close Tab", command=None)
-        self.file_menu.add_command(label="Exit", command=quit())
+        self.file_menu.add_command(label="Exit", command=None)
         
         
+        self.frame1 = tk.Frame(self.window)
         
-        self.frame1.grid(row=0)
+        
+        self.frame1.grid(row=1)
         
         self.frame2 = tk.Frame(self.window)
         
         
-        self.frame2.grid(row=0)
-        
-        self.frame3 = tk.Frame(self.window)
-        
-        
-        self.frame3.grid(row=0)
+        self.frame2.grid(row=1)
         
         self.window.mainloop()
         
     def main(self):
         pass
 if __name__ == "__main__":
-    global frun
-    frun = True
-    
+
     main = Main()
     main.main()
     
