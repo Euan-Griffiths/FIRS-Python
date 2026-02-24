@@ -10,7 +10,7 @@ from astropy.visualization import make_lupton_rgb # Lupton rgb allows for multii
 
 
     
-class BackendMain():
+class BackendMain(): #backend for FITS rendering code
     def __init__(self):
         pass
 
@@ -43,27 +43,35 @@ class BackendMain():
             return("Rendering Error")
 
 
-class Main(BackendMain):
+class Main(BackendMain): #Main code used for all misc functions
     def __init__(self):
-        #Initalising the backend and frontend
+        #Inherting the backend
         super().__init__()
 
     def main(self):
         self.frontend = FrontendMain()
+        
+    def quitprogram(self): # sub function to end the application when run in the menu bar
+        quit()
 
-class FrontendMain(Main):
+class FrontendMain(Main): # All frontend rendering 
     def __init__(self):
-        super().__init__()
+        super().__init__() # Inherits Main and Backend main
+        
+        #Class global variables
         self.colour = "#888"
         self.window = tk.Tk()
+        
+        #Tkinter window setup
         self.window.geometry=("500x500")
         self.window.state('zoomed')
         self.window.iconbitmap("./MAIN_CODE/SmallLogo.ico")
         self.window.configure(background=self.colour)
         
-        
+        #Creating the window menu bar for ease of accses
         self.Menubar = tk.Menu()
         self.window.config(menu=self.Menubar)
+        
         self.file_menu = tk.Menu(self.Menubar)
         self.edit_menu = tk.Menu(self.Menubar)
         self.option_menu = tk.Menu(self.Menubar)
@@ -72,18 +80,20 @@ class FrontendMain(Main):
         self.Menubar.add_cascade(menu=self.edit_menu,label="Edit")
         self.Menubar.add_cascade(menu=self.option_menu,label="Options")
         
+        #Adding the options to the file menu
         self.file_menu.add_command(label="New", command=None)
         self.file_menu.add_command(label="Save File", command=None)
         self.file_menu.add_command(label="Open File", command=None)
         self.file_menu.add_command(label="Close Tab", command=None)
         self.file_menu.add_command(label="Exit", command=self.quitprogram())
         
-        
+        #creating the main window frame for the project
         self.frame1 = tk.Frame(self.window)
         
         
         self.frame1.grid(row=1)
         
+        #creating the bottom bar for the application 
         self.frame2 = tk.Frame(self.window)
         
         
@@ -95,11 +105,9 @@ class FrontendMain(Main):
         
     def main(self):
         pass
-    
-    def quitprogram(self):
-        quit()
-if __name__ == "__main__":
 
+        
+if __name__ == "__main__":
     main = Main()
     main.main()
     
