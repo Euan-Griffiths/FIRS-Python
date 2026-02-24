@@ -75,7 +75,7 @@ class FrontendMain(Main):
         self.file_menu.add_command(label="New", command=None)
         self.file_menu.add_command(label="Save File", command=None)
         self.file_menu.add_command(label="Open File", command=None)
-        self.file_menu.add_command(label="Close Tab", command=None)
+        self.file_menu.add_command(label="Open Web File", command=None)
         self.file_menu.add_command(label="Exit", command=self.quitprogram())
         
         
