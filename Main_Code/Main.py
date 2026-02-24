@@ -85,7 +85,7 @@ class FrontendMain(Main): # All frontend rendering
         self.file_menu.add_command(label="Save File", command=None)
         self.file_menu.add_command(label="Open File", command=None)
         self.file_menu.add_command(label="Open Web File", command=None)
-        self.file_menu.add_command(label="Exit", command=self.quitprogram())
+        self.file_menu.add_command(label="Exit", command=lambda:self.quitprogram())
         
         #creating the main window frame for the project
         self.frame1 = tk.Frame(self.window)
