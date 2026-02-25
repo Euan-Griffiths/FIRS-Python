@@ -2,7 +2,7 @@
 
 from astropy.io import fits # Import from the astropy libairy to be able to open local and online fits files
 from matplotlib import pyplot as plt # Allows for the creation of the image and the rendering of frequancy spectra histograms
-import numpy as np # Allows for the fast modification to the arrays due to the size of the arrays being between 500-20000 px wide
+from numpy import array # Allows for the fast modification to the arrays due to the size of the arrays being between 500-20000 px wide
 import tkinter as tk # Tkinter for the projects frontend for the user
 from astropy.visualization import make_lupton_rgb # Lupton rgb allows for multiimage stacking for the user to generate colour images
 
@@ -19,7 +19,7 @@ class BackendMain(): #backend for FITS rendering code
 
     def Image_Spectra_Data_Formater(self):
         # Makes the Data Array 1D and sorts it in preperation for a MatPlotLib Histogram for the image spectra.
-        self.data = np.array(self.data) 
+        self.data = array(self.data) 
         self.data = self.data.reshape(-1) 
         self.data = list(filter(lambda a: a!='nan',self.data))
         self.data.sort()
@@ -50,6 +50,7 @@ class Main(BackendMain): #Main code used for all misc functions
 
     def main(self):
         self.frontend = FrontendMain()
+        self.frontend.createnewInstance()
         
     def quitprogram(self): # sub function to end the application when run in the menu bar
         quit()
@@ -70,7 +71,9 @@ class FrontendMain(Main): # All frontend rendering
         
         #Creating the window menu bar for ease of accses
         self.Menubar = tk.Menu()
-        self.window.config(menu=self.Menubar)
+        
+        
+        
         
         self.file_menu = tk.Menu(self.Menubar)
         self.edit_menu = tk.Menu(self.Menubar)
@@ -81,15 +84,21 @@ class FrontendMain(Main): # All frontend rendering
         self.Menubar.add_cascade(menu=self.option_menu,label="Options")
         
         #Adding the options to the file menu
-        self.file_menu.add_command(label="New", command=None)
+        self.file_menu.add_command(label="New", command=self.createnewInstance())
         self.file_menu.add_command(label="Save File", command=None)
         self.file_menu.add_command(label="Open File", command=None)
         self.file_menu.add_command(label="Open Web File", command=None)
         self.file_menu.add_command(label="Exit", command=lambda:self.quitprogram())
         
-        #creating the main window frame for the project
-        self.frame1 = tk.Frame(self.window)
+        self.window.config(menu=self.Menubar)
         
+        #creating the main window frame for the project
+        
+        self.frame1 = tk.Frame(self.window)
+        self.image = tk.PhotoImage(file="./Main_Code/LargeLogoGrey.png") # Adding Default load image
+        self.imageplace = tk.Label(self.frame1,image=self.image)
+        self.imageplace.config(background=self.colour)
+        self.imageplace.grid(column=0,row=0)
         
         self.frame1.grid(row=1)
         
@@ -101,8 +110,9 @@ class FrontendMain(Main): # All frontend rendering
         
         self.window.mainloop()
     
+    def createnewInstance(self):
+        pass
     
-        
     def main(self):
         pass
 
