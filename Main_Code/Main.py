@@ -11,6 +11,7 @@ from astropy.visualization import make_lupton_rgb # Lupton rgb allows for multii
 
     
 class BackendMain(): #backend for FITS rendering code
+
     def __init__(self):
         pass
 
@@ -26,6 +27,7 @@ class BackendMain(): #backend for FITS rendering code
         
     def Create_Image_Non_Lupin_RGB(self,Path,Cmap,Bounds):
         try:
+
             with fits.open(self.imageLink) as self.hdul: # Opens the image and gets the image Data for rendering and the Header for credits 
                 self.data = self.hdul[self.location].data
                 self.header = self.hdul[self.location].header
@@ -43,7 +45,9 @@ class BackendMain(): #backend for FITS rendering code
             return("Rendering Error")
 
 
+
 class Main(BackendMain): #Main code used for all misc functions
+
     def __init__(self):
         #Inherting the backend
         super().__init__()
@@ -55,30 +59,33 @@ class Main(BackendMain): #Main code used for all misc functions
     def quitprogram(self): # sub function to end the application when run in the menu bar
         quit()
 
+
+
 class FrontendMain(Main): # All frontend rendering 
     def __init__(self):
         super().__init__() # Inherits Main and Backend main
         
+
         #Class global variables
         self.colour = "#888"
         self.window = tk.Tk()
         
+
         #Tkinter window setup
         self.window.geometry=("500x500")
         self.window.state('zoomed')
         self.window.iconbitmap("./MAIN_CODE/SmallLogo.ico")
         self.window.configure(background=self.colour)
         
-        #Creating the window menu bar for ease of accses
+        #Creating the window menu bar
         self.Menubar = tk.Menu()
-        
-        
         
         
         self.file_menu = tk.Menu(self.Menubar)
         self.edit_menu = tk.Menu(self.Menubar)
         self.option_menu = tk.Menu(self.Menubar)
         
+        #Adding the dropdown menues; File, Edit, Options
         self.Menubar.add_cascade(menu=self.file_menu,label="File")
         self.Menubar.add_cascade(menu=self.edit_menu,label="Edit")
         self.Menubar.add_cascade(menu=self.option_menu,label="Options")
@@ -100,7 +107,7 @@ class FrontendMain(Main): # All frontend rendering
         self.imageplace.config(background=self.colour)
         self.imageplace.grid(column=0,row=0)
         
-        self.frame1.grid(row=1)
+        self.frame1.grid(row=0)
         
         #creating the bottom bar for the application 
         self.frame2 = tk.Frame(self.window)
