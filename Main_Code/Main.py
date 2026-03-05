@@ -5,6 +5,7 @@ from matplotlib import pyplot as plt # Allows for the creation of the image and 
 from numpy import array # Allows for the fast modification to the arrays due to the size of the arrays being between 500-20000 px wide
 import tkinter as tk # Tkinter for the projects frontend for the user
 from astropy.visualization import make_lupton_rgb # Lupton rgb allows for multiimage stacking for the user to generate colour images
+from PIL import Image, ImageTk #Import pillow to resize images in Tkinter
 
 # --- Main Code ----
 
