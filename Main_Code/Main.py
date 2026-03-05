@@ -24,7 +24,7 @@ class BackendMain(): #backend for FITS rendering code
         self.data = list(filter(lambda a: a!='nan',self.data))
         self.data.sort()
         
-    def CreateImageNonLupin(self,Path,Cmap,Bounds):
+    def Create_Image_Non_Lupin_RGB(self,Path,Cmap,Bounds):
         try:
             with fits.open(self.imageLink) as self.hdul: # Opens the image and gets the image Data for rendering and the Header for credits 
                 self.data = self.hdul[self.location].data
@@ -50,7 +50,7 @@ class Main(BackendMain): #Main code used for all misc functions
 
     def main(self):
         self.frontend = FrontendMain()
-        self.frontend.createnewInstance()
+        self.frontend.Create_New_Instance()
         
     def quitprogram(self): # sub function to end the application when run in the menu bar
         quit()
@@ -84,7 +84,7 @@ class FrontendMain(Main): # All frontend rendering
         self.Menubar.add_cascade(menu=self.option_menu,label="Options")
         
         #Adding the options to the file menu
-        self.file_menu.add_command(label="New", command=self.createnewInstance())
+        self.file_menu.add_command(label="New", command=lambda:self.createnewInstance())
         self.file_menu.add_command(label="Save File", command=None)
         self.file_menu.add_command(label="Open File", command=None)
         self.file_menu.add_command(label="Open Web File", command=None)
@@ -110,7 +110,7 @@ class FrontendMain(Main): # All frontend rendering
         
         self.window.mainloop()
     
-    def createnewInstance(self):
+    def Create_New_Instance(self):
         pass
     
     def main(self):
