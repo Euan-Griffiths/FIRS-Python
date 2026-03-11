@@ -105,8 +105,13 @@ class FrontendMain(Main): # All frontend rendering
         #creating the main window frame for the project
         
         self.frame1 = tk.Frame(self.window)
-        self.image = tk.PhotoImage(file="./Main_Code/LargeLogoGrey.png") # Adding Default load image
-        self.imageplace = tk.Label(self.frame1,image=self.image)
+        self.imagescale = Image.open("MAIN_CODE\LargeLogoGrey.png")
+        self.width = self.window.winfo_width
+        print(self.width)
+        self.width = int(self.width)
+        self.imagerescale = self.imagescale.resize(int(float(self.width)*0.90),int(float(self.width)*0.90))
+        self.img = ImageTk.PhotoImage(self.imagerescale)
+        self.imageplace = tk.Label(self.frame1,image=self.img)
         self.imageplace.config(background=self.colour)
         self.imageplace.grid(column=0,row=0)
         
