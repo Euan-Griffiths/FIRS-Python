@@ -96,7 +96,7 @@ class FrontendMain(Main): # All frontend rendering
         #Adding the options to the file menu
         self.file_menu.add_command(label="New", command=lambda:self.createnewInstance())
         self.file_menu.add_command(label="Save File", command=None)
-        self.file_menu.add_command(label="Open File", command=None)
+        self.file_menu.add_command(label="Open local File", command=None)
         self.file_menu.add_command(label="Open Web File", command=None)
         self.file_menu.add_command(label="Exit", command=lambda:self.quitprogram())
         
@@ -105,12 +105,11 @@ class FrontendMain(Main): # All frontend rendering
         #creating the main window frame for the project
         
         self.frame1 = tk.Frame(self.window)
-        self.imagescale = Image.open("MAIN_CODE\LargeLogoGrey.png")
-        self.width = self.window.winfo_width
-        print(self.width)
-        self.width = int(self.width)
-        self.imagerescale = self.imagescale.resize(int(float(self.width)*0.90),int(float(self.width)*0.90))
-        self.img = ImageTk.PhotoImage(self.imagerescale)
+        self.orignalImage = Image.open("MAIN_CODE\LargeLogoGrey.png")
+        self.height = self.window.winfo_height()
+        self.height = int(self.height)
+        self.imageRescale = self.orignalImage.resize((int(float(self.height)*0.90),int(float(self.height)*0.90)))
+        self.img = ImageTk.PhotoImage(self.imageRescale)
         self.imageplace = tk.Label(self.frame1,image=self.img)
         self.imageplace.config(background=self.colour)
         self.imageplace.grid(column=0,row=0)
@@ -122,7 +121,6 @@ class FrontendMain(Main): # All frontend rendering
         
         
         self.frame2.grid(row=1)
-        
         self.window.mainloop()
     
     def Create_New_Instance(self):
