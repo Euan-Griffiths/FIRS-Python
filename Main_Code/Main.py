@@ -70,10 +70,11 @@ class FrontendMain(Main): # All frontend rendering
         
 
         #Class global variables
-        self.colour = "#888"
+        self.darkColour = "#888"
+        self.lightColour = "#BBB"
         self.window = tk.Tk()
-        
-
+        self.darkmode = False
+        self.colour = self.lightColour
         #Tkinter window setup
         self.window.geometry=("500x500")
         self.window.state('zoomed')
@@ -99,6 +100,8 @@ class FrontendMain(Main): # All frontend rendering
         self.file_menu.add_command(label="Open local File", command=None)
         self.file_menu.add_command(label="Open Web File", command=None)
         self.file_menu.add_command(label="Exit", command=lambda:self.quitprogram())
+        
+        self.edit_menu.add_command(label="Dark Mode",command=lambda:self.DarkmodeConfig())
         
         self.window.config(menu=self.Menubar)
         
@@ -126,6 +129,14 @@ class FrontendMain(Main): # All frontend rendering
     def Create_New_Instance(self):
         pass
     
+    def DarkmodeConfig(self):
+        if self.darkmode == False:
+            self.colour = self.darkColour
+            self.darkmode= True
+        else:
+            self.darkmode = False
+            self.colour = self.lightColour
+        self.window.update()
     def main(self):
         pass
 
