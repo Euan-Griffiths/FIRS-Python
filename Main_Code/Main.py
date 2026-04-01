@@ -1,23 +1,28 @@
 # --- Import Staments ----
+
 #Fits Operations
 from astropy.io import fits # Import from the astropy libairy to be able to open local and online fits files
 from astropy.visualization import make_lupton_rgb # Lupton rgb allows for multiimage stacking for the user to generate colour images
-#Data Operations and viuslisations
+
+#Data Operations and visulisations
 from matplotlib import pyplot as plt # Allows for the creation of the image and the rendering of frequancy spectra histograms
 from numpy import array # Allows for the fast modification to the arrays due to the size of the arrays being between 500-20000 px wide
-#Frontend
+
+#Frontend libiaries
 import tkinter as tk # Tkinter for the projects frontend for the user
 from PIL import Image, ImageTk #Import pillow to resize images in Tkinter
 
 # --- Main Code ----
 
-
     
 class BackendMain(): #backend for FITS rendering code
 
     def __init__(self):
+        # backend global varibles
         self.minval = 0
         self.maxval = 100
+        self.data = []
+        self.header = ""
 
     def main(self):
         pass
@@ -30,21 +35,23 @@ class BackendMain(): #backend for FITS rendering code
         self.data.sort()
         
     def Create_Image_Non_Lupin_RGB(self,Path,Cmap,Bounds):
+        
         try:
-
             with fits.open(self.imageLink) as self.hdul: # Opens the image and gets the image Data for rendering and the Header for credits 
                 self.data = self.hdul[self.location].data
                 self.header = self.hdul[self.location].header
                 
         except FileNotFoundError: #File Erroring handeling
             return ("Incorrect File Path")
+        
         except:
             return("Unkown Error")
         
         try: # Image rendering and error detection
-            plt.imshow(self.data,cmap=Cmap,vmin=Bounds[0],vmax=Bounds[1])
+            plt.imshow(self.data,cmap=Cmap,vmin=Bounds[self.minval/100],vmax=Bounds[self.maxval]/100)
             plt.colorbar()
             self.render()
+            
         except:
             return("Rendering Error")
 
@@ -69,14 +76,14 @@ class FrontendMain(Main): # All frontend rendering
     def __init__(self):
         super().__init__() # Inherits Main and Backend main
         
-        #Class global variables
+        #frontend global variables
         self.darkColour = "#444"
         self.lightColour = "#DDD"
-        
-        
-        self.window = tk.Tk()
         self.darkmode = False
         self.colour = self.lightColour
+        
+        self.window = tk.Tk()
+        
         
         
         #Tkinter window setup
@@ -166,7 +173,7 @@ class FrontendMain(Main): # All frontend rendering
     def main(self):
         pass
 
-        
+#Runs the program checks if not being imported        
 if __name__ == "__main__":
     main = Main()
     main.main()

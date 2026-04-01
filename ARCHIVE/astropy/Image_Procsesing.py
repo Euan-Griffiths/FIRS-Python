@@ -31,6 +31,7 @@ class Main():
         except:
             return("Unkown Error")
         
+        print(self.header)
         try: # Image rendering and error detection
             plt.imshow(self.data,cmap=self.cmap,vmin=self.lowerbound,vmax=self.upperbound)
             plt.colorbar()
