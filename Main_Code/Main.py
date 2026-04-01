@@ -64,8 +64,8 @@ class Main(BackendMain): #Main code used for all misc functions
         super().__init__()
 
     def main(self):
-        self.frontend = FrontendMain()
-        self.frontend.Create_New_Instance()
+        self.frontend = FrontendMain() # Iniates the front end when run
+        
         
     def quitprogram(self): # sub function to end the application when run in the menu bar
         quit()
@@ -74,7 +74,7 @@ class Main(BackendMain): #Main code used for all misc functions
 
 class FrontendMain(Main): # All frontend rendering 
     def __init__(self):
-        super().__init__() # Inherits Main and Backend main
+        super().__init__() # Inherits Main and Backend through the class heirachy Backend -> Main -> Frontend 
         
         #frontend global variables
         self.darkColour = "#444"
