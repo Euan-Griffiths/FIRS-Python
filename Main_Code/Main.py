@@ -21,6 +21,8 @@ class BackendMain(): #backend for FITS rendering code
         # backend global varibles
         self.minval = 0
         self.maxval = 100
+        self.lowerBound = self.minval
+        self.upperBound = self.maxval
         self.data = []
         self.header = ""
 
@@ -48,7 +50,7 @@ class BackendMain(): #backend for FITS rendering code
             return("Unkown Error")
         
         try: # Image rendering and error detection
-            plt.imshow(self.data,cmap=Cmap,vmin=Bounds[self.minval/100],vmax=Bounds[self.maxval]/100)
+            plt.imshow(self.data,cmap=Cmap,vmin=Bounds[self.lowerBound/100],vmax=Bounds[self.upperBound]/100)
             plt.colorbar()
             self.render()
             
