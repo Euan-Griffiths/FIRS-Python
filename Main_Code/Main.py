@@ -35,6 +35,14 @@ class BackendMain(): #backend for FITS rendering code
         self.data = self.data.reshape(-1) 
         self.data = list(filter(lambda a: a!='nan',self.data))
         self.data.sort()
+    
+    def quitprogram():
+        quit()
+
+
+class imagerenders(BackendMain):
+    def __init__(self):
+        super().__init__()
         
     def Create_Image_Non_Lupin_RGB(self,Path,Cmap,Bounds):
         
@@ -56,27 +64,13 @@ class BackendMain(): #backend for FITS rendering code
             
         except:
             return("Rendering Error")
+    
+    
 
 
-
-class Main(BackendMain): #Main code used for all misc functions
-
+class FrontendMain(BackendMain): # All frontend rendering 
     def __init__(self):
-        #Inherting the backend
-        super().__init__()
-
-    def main(self):
-        self.frontend = FrontendMain() # Iniates the front end when run
-        
-        
-    def quitprogram(self): # sub function to end the application when run in the menu bar
-        quit()
-
-
-
-class FrontendMain(Main): # All frontend rendering 
-    def __init__(self):
-        super().__init__() # Inherits Main and Backend through the class heirachy Backend -> Main -> Frontend 
+        super().__init__() # Inherits Main and Backend through the class heirachy Backend -> Frontend 
         
         #frontend global variables
         self.darkColour = "#444"
@@ -176,7 +170,4 @@ class FrontendMain(Main): # All frontend rendering
         pass
 
 #Runs the program checks if not being imported        
-if __name__ == "__main__":
-    main = Main()
-    main.main()
     
