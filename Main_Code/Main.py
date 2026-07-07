@@ -170,4 +170,5 @@ class FrontendMain(BackendMain): # All frontend rendering
         pass
 
 #Runs the program checks if not being imported        
-    
+if __name__ == "__main__":
+    pass
