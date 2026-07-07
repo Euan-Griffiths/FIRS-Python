@@ -1,5 +1,5 @@
 # --- Import Staments ----
-
+#Auth test
 #Fits Operations
 from astropy.io import fits # Import from the astropy libairy to be able to open local and online fits files
 from astropy.visualization import make_lupton_rgb # Lupton rgb allows for multiimage stacking for the user to generate colour images
