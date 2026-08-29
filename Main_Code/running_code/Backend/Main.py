@@ -31,27 +31,3 @@ class BackendMain(): #backend for FITS rendering code
         quit()
 
 
-class imagerenders(BackendMain):
-    def __init__(self):
-        super().__init__()
-        
-    def Create_Image_Non_Lupin_RGB(self,Path,Cmap,Bounds):
-        
-        try:
-            with fits.open(self.imageLink) as self.hdul: # Opens the image and gets the image Data for rendering and the Header for credits 
-                self.data = self.hdul[self.location].data
-                self.header = self.hdul[self.location].header
-                
-        except FileNotFoundError: #File Erroring handeling
-            return ("Incorrect File Path")
-        
-        except:
-            return("Unkown Error")
-        
-        try: # Image rendering and error detection
-            plt.imshow(self.data,cmap=Cmap,vmin=Bounds[self.lowerBound/100],vmax=Bounds[self.upperBound]/100)
-            plt.colorbar()
-            self.render()
-            
-        except:
-            return("Rendering Error")
