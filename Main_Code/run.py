@@ -1,5 +1,6 @@
-from running_code.frontend import FrontendMain
+from running_code import frontend
 
 if __name__ == "__main__":
-    maincode = FrontendMain
-    maincode.main()
+    main = frontend.FrontendMain
+    main.__init__()
+     
