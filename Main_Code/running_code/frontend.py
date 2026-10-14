@@ -7,6 +7,8 @@ class FrontendMain: # All frontend rendering
     def __init__(self):
         
         #frontend global variables
+        self.minval = 0
+        self.maxval = 100
         self.darkColour = "#444"
         self.lightColour = "#DDD"
         self.darkmode = False
