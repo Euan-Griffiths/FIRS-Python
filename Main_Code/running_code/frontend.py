@@ -1,4 +1,6 @@
 #Frontend libiaries
+from pathlib import Path
+import sys
 import tkinter as tk # Tkinter for the projects frontend for the user
 from PIL import Image, ImageTk #Import pillow to resize images in Tkinter
 from running_code.Backend.Main import BackendMain as bk
@@ -19,9 +21,10 @@ class FrontendMain: # All frontend rendering
         
         
         #Tkinter window setup
-        self.window.geometry=("500x500")
-        self.window.state('zoomed')
-        self.window.iconbitmap(r"./MAIN_CODE/SmallLogo.ico")
+        self.window.geometry("500x500")
+        if sys.platform == "win32":
+            self.window.state("zoomed")
+            self.window.iconbitmap(str(Path(__file__).resolve().parents[1] / "SmallLogo.ico"))
         self.window.configure(background=self.colour)
         
         #Creating the window menu bar
@@ -59,12 +62,13 @@ class FrontendMain: # All frontend rendering
         
         # adding the onload image to the window
         
-        self.Image = Image.open(r"MAIN_CODE\LargeLogoGrey.png").convert('RGBA')
-        
-        self.scaledImage = self.Image.resize((int(float(self.height)*0.90),int(float(self.height)*0.90)))
+        logo_path = Path(__file__).resolve().parents[1] / "LargeLogoGrey.png"
+        self.Image = Image.open(logo_path).convert('RGBA')
+        self.scaledImage = self.Image.resize(
+            (int(float(self.height) * 0.90), int(float(self.height) * 0.90))
+        )
         self.img = ImageTk.PhotoImage(self.scaledImage)
-        
-        self.imageplace = tk.Label(self.frame1,image=self.img)
+        self.imageplace = tk.Label(self.frame1, image=self.img)
         self.imageplace.config(background=self.colour)
         self.imageplace.grid(column=0,row=0)
         
