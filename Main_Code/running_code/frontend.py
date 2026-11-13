@@ -1,6 +1,7 @@
 #Frontend libiaries
 from pathlib import Path
 import sys
+import tkinter.filedialog # Allows for the user to open local files from their computer
 import tkinter as tk # Tkinter for the projects frontend for the user
 from PIL import Image, ImageTk #Import pillow to resize images in Tkinter
 from running_code.Backend.BackendCode import mainBackend as bk #Import the backend code for the project
@@ -43,8 +44,8 @@ class FrontendMain: # All frontend rendering
         #Adding the options to the file menu
         self.file_menu.add_command(label="New", command=lambda:bk.createnewInstance())
         self.file_menu.add_command(label="Save File", command=None)
-        self.file_menu.add_command(label="Open local File", command=tk.filedialog.askopenfilename(filetypes=[("FITS files", "*.fits"), ("All files", "*.*")]))
-        self.file_menu.add_command(label="Open Web File", command=None)
+        self.file_menu.add_command(label="Open local File", command=lambda: bk.openfits(tk.filedialog.askopenfilename(initialdir = "/",title = "Select a File",filetypes = (("FITS files", "*.fits*"),("all files","*.*")))))
+        self.file_menu.add_command(label="Open Web File", command=lambda: tkinter.simpledialog.askstring("Webfile", "Enter the URL of the web file:", initialvalue=None, show=None, parent=None))
         self.file_menu.add_command(label="Exit", command=lambda:bk.quitprogram())
         
         # Adding options to the Edit menu
