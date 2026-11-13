@@ -3,7 +3,7 @@ from pathlib import Path
 import sys
 import tkinter as tk # Tkinter for the projects frontend for the user
 from PIL import Image, ImageTk #Import pillow to resize images in Tkinter
-from Backend import Backend as bk
+from Backend.Backend import mainBackend as bk
 
 class FrontendMain: # All frontend rendering 
     def __init__(self):
@@ -43,7 +43,7 @@ class FrontendMain: # All frontend rendering
         #Adding the options to the file menu
         self.file_menu.add_command(label="New", command=lambda:bk.createnewInstance())
         self.file_menu.add_command(label="Save File", command=None)
-        self.file_menu.add_command(label="Open local File", command=None)
+        self.file_menu.add_command(label="Open local File", command=tk.filedialog.askopenfilename(filetypes=[("FITS files", "*.fits"), ("All files", "*.*")]))
         self.file_menu.add_command(label="Open Web File", command=None)
         self.file_menu.add_command(label="Exit", command=lambda:bk.quitprogram())
         
