@@ -3,7 +3,7 @@ from pathlib import Path
 import sys
 import tkinter as tk # Tkinter for the projects frontend for the user
 from PIL import Image, ImageTk #Import pillow to resize images in Tkinter
-from Backend.Backend import mainBackend as bk
+from running_code.Backend.BackendCode import mainBackend as bk #Import the backend code for the project
 
 class FrontendMain: # All frontend rendering 
     def __init__(self):
