@@ -48,8 +48,8 @@ class FrontendMain: # All frontend rendering
         self.file_menu.add_command(label="Open Web File", command=lambda: tkinter.simpledialog.askstring("Webfile", "Enter the URL of the web file:", initialvalue=None, show=None, parent=None))
         self.file_menu.add_command(label="Exit", command=lambda:bk.quitprogram())
         
-        # Adding options to the Edit menu
-        self.edit_menu.add_command(label="Dark Mode",command=lambda:self.DarkmodeConfig())
+        # Adding options to the Option menu
+        self.option_menu.add_command(label="Dark Mode",command=lambda:self.DarkmodeConfig())
         
         # Placing the menu into the frame
         self.window.config(menu=self.Menubar)

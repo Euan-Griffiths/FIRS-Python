@@ -17,7 +17,6 @@ class mainBackend: # All backend operations for the project
         sys.exit()
 
     def openfits(self, file_path): # Opens the fits file and returns the data and header
-        with fits.open(file_path) as hdul:
-            data = hdul[0].data
-            header = hdul[0].header
-        return data, header
+        with fits.open(file_path) as self.hdul:
+            pass
+        print(self.hdul)
