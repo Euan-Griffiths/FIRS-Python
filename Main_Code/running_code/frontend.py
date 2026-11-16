@@ -60,13 +60,15 @@ class FrontendMain: # All frontend rendering
         
         self.height = self.window.winfo_height()
         self.height = int(self.height)
-        
+        self.scaledHeight = int(float(self.height) * 0.90)   
+        if self.scaledHeight < 1:
+            self.scaledHeight = 1     
         # adding the onload image to the window
         
         logo_path = Path(__file__).resolve().parents[1] / "LargeLogoGrey.png"
         self.Image = Image.open(logo_path).convert('RGBA')
         self.scaledImage = self.Image.resize(
-            (int(float(self.height) * 0.90), int(float(self.height) * 0.90))
+            (self.scaledHeight, self.scaledHeight)
         )
         self.img = ImageTk.PhotoImage(self.scaledImage)
         self.imageplace = tk.Label(self.frame1, image=self.img)
