@@ -26,7 +26,11 @@ class FrontendMain: # All frontend rendering
         if sys.platform == "win32":
             self.window.state("zoomed")
             self.window.iconbitmap(str(Path(__file__).resolve().parents[1] / "SmallLogo.ico"))
+        elif sys.platform == "linux":
+            self.window.state("normal")
+            self.window.attributes('-zoomed', True) 
         self.window.configure(background=self.colour)
+
         
         #Creating the window menu bar
         self.Menubar = tk.Menu()
@@ -61,8 +65,8 @@ class FrontendMain: # All frontend rendering
         self.height = self.window.winfo_height()
         self.height = int(self.height)
         self.scaledHeight = int(float(self.height) * 0.90)   
-        if self.scaledHeight < 1:
-            self.scaledHeight = 1     
+        if self.height < 500:
+            self.scaledHeight = 450     
         # adding the onload image to the window
         
         logo_path = Path(__file__).resolve().parents[1] / "LargeLogoGrey.png"
