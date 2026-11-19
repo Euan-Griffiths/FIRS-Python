@@ -22,13 +22,13 @@ class FrontendMain: # All frontend rendering
         
         
         #Tkinter window setup
-        self.window.geometry("500x500")
+        self.window.geometry("750x500")
         if sys.platform == "win32":
             self.window.state("zoomed")
             self.window.iconbitmap(str(Path(__file__).resolve().parents[1] / "SmallLogo.ico"))
         elif sys.platform == "linux":
             self.window.state("normal")
-            self.window.attributes('-zoomed', True) 
+            # self.window.attributes('-zoomed', True) 
         self.window.configure(background=self.colour)
 
         
@@ -50,7 +50,7 @@ class FrontendMain: # All frontend rendering
         self.file_menu.add_command(label="Save File", command=None)
         self.file_menu.add_command(label="Open local File", command=lambda: bk.openfits(tk.filedialog.askopenfilename(initialdir = "/",title = "Select a File",filetypes = (("FITS files", "*.fits*"),("all files","*.*")))))
         self.file_menu.add_command(label="Open Web File", command=lambda: tkinter.simpledialog.askstring("Webfile", "Enter the URL of the web file:", initialvalue=None, show=None, parent=None))
-        self.file_menu.add_command(label="Exit", command=lambda:bk.quitprogram())
+        self.file_menu.add_command(label="Exit", command=lambda:quit())
         
         # Adding options to the Option menu
         self.option_menu.add_command(label="Dark Mode",command=lambda:self.DarkmodeConfig())
